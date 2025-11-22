@@ -1,0 +1,38 @@
+<mat-card *ngIf="profile" class="profile-card">
+  <h2 class="profile-title">{{ profile.username | titlecase }}</h2>
+
+  <form [formGroup]="form" (ngSubmit)="save()" class="profile-form">
+ <mat-form-field appearance="fill" class="full-width">
+      <input matInput placeholder="Username" formControlName="username">
+      <mat-error *ngIf="form.get('username')?.invalid">Username is required</mat-error>
+    </mat-form-field>
+    <!-- EMAIL -->
+    <mat-form-field appearance="fill" class="full-width">
+      <input matInput placeholder="Email" formControlName="email">
+      <mat-error *ngIf="form.get('email')?.invalid">Enter a valid email</mat-error>
+    </mat-form-field>
+
+    <!-- PASSWORD -->
+    <mat-form-field appearance="fill" class="full-width">
+      <input matInput type="password" placeholder="New password (leave empty to keep current)" formControlName="password">
+    </mat-form-field>
+
+    <!-- ACTION BUTTONS -->
+    <div class="actions">
+  <button class="profile-btn reload-btn" type="button" (click)="load()">Reload</button>
+  <button class="profile-btn save-btn" type="submit" [disabled]="saving">
+    {{ saving ? 'Saving...' : 'Save Changes' }}
+  </button>
+</div>
+
+  </form>
+
+  <!-- META INFO -->
+ <div class="meta" *ngIf="profile.roles?.length">
+  <strong>Roles:</strong>
+  <ng-container *ngFor="let role of profile.roles">
+    <span class="role-badge">{{ formatRole(role) }}</span>
+  </ng-container>
+</div>
+
+</mat-card>

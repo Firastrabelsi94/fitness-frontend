@@ -1,0 +1,45 @@
+<section fxLayout="column" fxLayoutAlign="center center" class="register-container">
+
+  <form fxLayout="column"
+        fxLayoutGap="20px"
+        fxFlex.xs="100%"
+        fxFlex.gt-xs="500px"
+        [formGroup]="form"
+        (ngSubmit)="submit()"
+        class="register-form">
+
+    <!-- HEADER -->
+    <div class="register-header" fxLayout="column" fxLayoutAlign="center center">
+      <mat-icon>fitness_center</mat-icon>
+      <h2>Create Your Fitness Account</h2>
+      <p>Join the movement and start your transformation!</p>
+    </div>
+
+    <!-- USERNAME -->
+    <mat-form-field appearance="fill" class="full-width">
+      <input matInput placeholder="Username" formControlName="username">
+    </mat-form-field>
+
+    <!-- EMAIL -->
+    <mat-form-field appearance="fill" class="full-width">
+      <input matInput placeholder="Email" formControlName="email">
+    </mat-form-field>
+
+    <!-- PASSWORD -->
+    <mat-form-field appearance="fill" class="full-width">
+      <input matInput type="password" placeholder="Password" formControlName="password">
+    </mat-form-field>
+
+    <!-- BUTTON -->
+    <button mat-raised-button color="primary" type="submit" class="register-btn">
+      <mat-icon class="btn-icon">person_add</mat-icon>
+      <span class="btn-text">Create Account</span>
+    </button>
+
+    <!-- LOGIN LINK -->
+    <p class="login-text">
+      Already have an account? <a routerLink="/login">Login here</a>
+    </p>
+
+  </form>
+</section>

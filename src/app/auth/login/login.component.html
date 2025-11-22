@@ -1,0 +1,30 @@
+<section fxLayout="column" fxLayoutAlign="center center" class="login-container">
+
+  <mat-card class="login-card">
+    <h2 class="login-title">Login</h2>
+
+    <form [formGroup]="form" (ngSubmit)="submit()" class="login-form">
+
+      <!-- USERNAME -->
+      <mat-form-field appearance="fill" class="full-width">
+        <input matInput placeholder="Username" formControlName="username" />
+      </mat-form-field>
+
+      <!-- PASSWORD -->
+      <mat-form-field appearance="fill" class="full-width">
+        <input matInput type="password" placeholder="Password" formControlName="password" />
+      </mat-form-field>
+
+      <!-- BUTTON -->
+      <button class="profile-btn save-btn" type="submit" [disabled]="saving">
+        {{ saving ? 'Logging in...' : 'Login' }}
+      </button>
+
+      <p class="register-link">
+        Don’t have an account? <a routerLink="/register">Register here</a>
+      </p>
+
+    </form>
+  </mat-card>
+
+</section>

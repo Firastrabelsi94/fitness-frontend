@@ -1,0 +1,19 @@
+.app-toolbar {
+  background: linear-gradient(90deg, #ff7043, #ff3d00);
+  color: #fff;
+}
+
+.app-title {
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.toolbar-left { display:flex; align-items:center }
+.toolbar-spacer { flex: 1 1 auto; }
+
+.toolbar-nav a[mat-button] {
+  color: #fff;
+  font-weight: 600;
+}
+
+.toolbar-nav a[mat-button]:hover { opacity: 0.95 }
