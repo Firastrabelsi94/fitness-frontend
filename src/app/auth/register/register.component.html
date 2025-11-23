@@ -1,45 +1,47 @@
-<section fxLayout="column" fxLayoutAlign="center center" class="register-container">
-
-  <form fxLayout="column"
-        fxLayoutGap="20px"
-        fxFlex.xs="100%"
-        fxFlex.gt-xs="500px"
-        [formGroup]="form"
-        (ngSubmit)="submit()"
-        class="register-form">
-
-    <!-- HEADER -->
-    <div class="register-header" fxLayout="column" fxLayoutAlign="center center">
-      <mat-icon>fitness_center</mat-icon>
-      <h2>Create Your Fitness Account</h2>
-      <p>Join the movement and start your transformation!</p>
+<div class="min-h-screen bg-gray-50 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-md w-full space-y-8">
+    <div class="text-center">
+      <h2 class="mt-6 text-3xl font-extrabold text-gray-900">Create your account</h2>
+      <p class="mt-2 text-sm text-gray-600">Start tracking your workouts and progress with FitnessApp</p>
     </div>
 
-    <!-- USERNAME -->
-    <mat-form-field appearance="fill" class="full-width">
-      <input matInput placeholder="Username" formControlName="username">
-    </mat-form-field>
+    <div class="bg-white py-8 px-6 shadow rounded-lg">
+      <form class="space-y-6" [formGroup]="form" (ngSubmit)="submit()">
+        <div>
+          <label for="username" class="block text-sm font-medium text-gray-700">Username</label>
+          <div class="mt-1">
+            <input id="username" name="username" formControlName="username" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+          </div>
+          <div *ngIf="form.get('username')?.invalid && form.get('username')?.touched" class="text-red-600 text-sm mt-1">Username is required</div>
+        </div>
 
-    <!-- EMAIL -->
-    <mat-form-field appearance="fill" class="full-width">
-      <input matInput placeholder="Email" formControlName="email">
-    </mat-form-field>
+        <div>
+          <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+          <div class="mt-1">
+            <input id="email" name="email" formControlName="email" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+          </div>
+          <div *ngIf="form.get('email')?.invalid && form.get('email')?.touched" class="text-red-600 text-sm mt-1">Enter a valid email</div>
+        </div>
 
-    <!-- PASSWORD -->
-    <mat-form-field appearance="fill" class="full-width">
-      <input matInput type="password" placeholder="Password" formControlName="password">
-    </mat-form-field>
+        <div>
+          <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+          <div class="mt-1">
+            <input id="password" name="password" type="password" formControlName="password" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+          </div>
+          <div *ngIf="form.get('password')?.invalid && form.get('password')?.touched" class="text-red-600 text-sm mt-1">Password is required</div>
+        </div>
 
-    <!-- BUTTON -->
-    <button mat-raised-button color="primary" type="submit" class="register-btn">
-      <mat-icon class="btn-icon">person_add</mat-icon>
-      <span class="btn-text">Create Account</span>
-    </button>
+        <div>
+          <button type="submit" class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 disabled:opacity-60" [disabled]="form.invalid">
+            Create Account
+          </button>
+        </div>
 
-    <!-- LOGIN LINK -->
-    <p class="login-text">
-      Already have an account? <a routerLink="/login">Login here</a>
-    </p>
-
-  </form>
-</section>
+        <div class="text-sm text-center">
+          <span class="text-gray-600">Already have an account?</span>
+          <a routerLink="/auth/login" class="font-medium text-indigo-600 hover:text-indigo-500 ml-1">Sign in</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

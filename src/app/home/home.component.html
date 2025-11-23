@@ -1,0 +1,207 @@
+<main class="bg-white">
+  <!-- Hero -->
+  <section class="bg-gradient-to-b from-indigo-50 to-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
+      <div class="lg:grid lg:grid-cols-12 lg:gap-8 lg:items-center">
+        <div class="lg:col-span-7">
+          <h1 class="text-3xl sm:text-4xl font-extrabold text-gray-900">Gérez votre salle de sport facilement, rapidement, efficacement.</h1>
+          <p class="mt-4 text-lg text-gray-600">Une plateforme moderne de gestion des abonnés, paiements, planning, accès et performance – pensée pour coachs, salles de sport et studios fitness.</p>
+
+          <div class="mt-8 flex flex-col sm:flex-row sm:items-center sm:space-x-4 gap-3">
+            <a routerLink="/auth/register" class="inline-flex items-center justify-center px-6 py-3 rounded-md text-base font-semibold text-white bg-gradient-to-r from-amber-500 to-orange-600 shadow hover:opacity-95">Commencer maintenant</a>
+            <a routerLink="/" class="inline-flex items-center justify-center px-6 py-3 rounded-md text-base font-medium text-amber-600 bg-white border border-amber-200 hover:bg-amber-50">Voir la démo</a>
+          </div>
+
+          <div class="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-6">
+            <article #animateCard class="animate-card bg-white p-6 rounded-xl shadow-md transform transition duration-700 ease-out hover:-translate-y-2 hover:scale-105 hover:shadow-xl motion-safe:transform-gpu" style="transition-delay: 0ms" role="article" aria-labelledby="feat-1">
+              <div class="flex items-start space-x-4">
+                <div class="h-12 w-12 flex items-center justify-center bg-indigo-50 text-indigo-700 rounded-lg text-xl">🏋️‍♂️</div>
+                <div>
+                  <p id="feat-1" class="text-sm font-semibold text-gray-900">Abonnements</p>
+                  <p class="mt-1 text-sm text-gray-600">Plans mensuels, annuels, alertes d’expiration.</p>
+                </div>
+              </div>
+            </article>
+
+            <article #animateCard class="animate-card bg-white p-6 rounded-xl shadow-md transform transition duration-700 ease-out hover:-translate-y-2 hover:scale-105 hover:shadow-xl motion-safe:transform-gpu" style="transition-delay: 100ms" role="article" aria-labelledby="feat-2">
+              <div class="flex items-start space-x-4">
+                <div class="h-12 w-12 flex items-center justify-center bg-indigo-50 text-indigo-700 rounded-lg text-xl">💳</div>
+                <div>
+                  <p id="feat-2" class="text-sm font-semibold text-gray-900">Paiements</p>
+                  <p class="mt-1 text-sm text-gray-600">Historique, cartes, factures PDF automatiques.</p>
+                </div>
+              </div>
+            </article>
+
+            <article #animateCard class="animate-card bg-white p-6 rounded-xl shadow-md transform transition duration-700 ease-out hover:-translate-y-2 hover:scale-105 hover:shadow-xl motion-safe:transform-gpu" style="transition-delay: 200ms" role="article" aria-labelledby="feat-3">
+              <div class="flex items-start space-x-4">
+                <div class="h-12 w-12 flex items-center justify-center bg-indigo-50 text-indigo-700 rounded-lg text-xl">📊</div>
+                <div>
+                  <p id="feat-3" class="text-sm font-semibold text-gray-900">Dashboard</p>
+                  <p class="mt-1 text-sm text-gray-600">KPI, tendances, vues globales des abonnés.</p>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div class="mt-10 lg:mt-0 lg:col-span-5">
+          <div class="relative mx-auto max-w-md lg:max-w-full">
+            <img src="assets/gym.jpeg" alt="Salle de sport moderne" class="w-full rounded-xl shadow-lg object-cover" />
+            <!-- Placeholder: replace with generated hero/dashboard image -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <h2 class="text-2xl font-extrabold text-gray-900">Fonctionnalités principales</h2>
+      <p class="mt-2 text-gray-600">Tout ce dont vous avez besoin pour gérer vos membres et votre activité.</p>
+
+      <div class="mt-8 grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+        <!-- Subscriptions -->
+        <div #animateCard class="animate-card p-6 bg-gray-50 rounded-lg shadow-sm" style="transition-delay: 0ms">
+          <h3 class="text-lg font-semibold">Gestion des Abonnements</h3>
+          <p class="mt-2 text-sm text-gray-600">Créez, modifiez et renouvelez les abonnements en un clic. Plans mensuels, annuels ou personnalisés. Alertes automatiques d’expiration.</p>
+        </div>
+
+        <!-- Payments -->
+        <div #animateCard class="animate-card p-6 bg-gray-50 rounded-lg shadow-sm" style="transition-delay: 100ms">
+          <h3 class="text-lg font-semibold">Paiements & Facturation</h3>
+          <p class="mt-2 text-sm text-gray-600">Historique complet, paiement carte/cash/en ligne, génération automatique de factures PDF.</p>
+        </div>
+
+        <!-- Dashboard -->
+        <div #animateCard class="animate-card p-6 bg-gray-50 rounded-lg shadow-sm" style="transition-delay: 200ms">
+          <h3 class="text-lg font-semibold">Tableau de Bord Intelligent</h3>
+          <p class="mt-2 text-sm text-gray-600">Vue globale des abonnés, statistiques journalières et tendances : nouveaux membres, résiliations, revenus.</p>
+        </div>
+
+        <!-- Coaches -->
+        <div #animateCard class="animate-card p-6 bg-gray-50 rounded-lg shadow-sm" style="transition-delay: 300ms">
+          <h3 class="text-lg font-semibold">Gestion des Coachs & Planning</h3>
+          <p class="mt-2 text-sm text-gray-600">Créez des séances, planning semaine/mois, affectez les coachs et suivez les participations.</p>
+        </div>
+
+        <!-- Mobile -->
+        <div #animateCard class="animate-card p-6 bg-gray-50 rounded-lg shadow-sm" style="transition-delay: 400ms">
+          <h3 class="text-lg font-semibold">Application Mobile (bientôt)</h3>
+          <p class="mt-2 text-sm text-gray-600">Scanneur QR, accès membres et suivi des performances — mockup mobile disponible.</p>
+        </div>
+
+        <!-- Why -->
+        <div #animateCard class="animate-card p-6 bg-gray-50 rounded-lg shadow-sm" style="transition-delay: 500ms">
+          <h3 class="text-lg font-semibold">Pourquoi choisir notre application ?</h3>
+          <ul class="mt-2 text-sm text-gray-600 space-y-1 list-disc list-inside">
+            <li>UX moderne & intuitive</li>
+            <li>Support pour plusieurs salles</li>
+            <li>100% Web – mobile & PC</li>
+            <li>Sécurité (JWT, Spring Security)</li>
+            <li>Installation simple & rapide</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="bg-indigo-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <h2 class="text-2xl font-extrabold text-gray-900">Tarifs simples & transparents</h2>
+      <div class="mt-8 grid gap-6 grid-cols-1 md:grid-cols-3">
+        <div class="bg-white p-6 rounded-lg shadow transform transition duration-500 ease-out hover:scale-105 hover:shadow-2xl">
+          <h3 class="text-lg font-semibold">Starter — 0€/mois</h3>
+          <p class="mt-2 text-gray-600">Jusqu'à 20 abonnés • Gestion basique • Support email</p>
+          <div class="mt-6">
+            <button class="w-full px-4 py-2 bg-white border border-gray-200 rounded-md">Choisir ce plan</button>
+          </div>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow border-2 border-amber-400 transform transition duration-500 ease-out hover:scale-105 hover:shadow-2xl">
+          <h3 class="text-lg font-semibold">Pro — 29€/mois</h3>
+          <p class="mt-2 text-gray-600">Abonnés illimités • Paiements & factures PDF • Dashboards avancés • Planning coachs</p>
+          <div class="mt-6">
+            <button class="w-full px-4 py-2 bg-gradient-to-r from-amber-500 to-orange-600 text-white rounded-md">Choisir ce plan</button>
+          </div>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow transform transition duration-500 ease-out hover:scale-105 hover:shadow-2xl">
+          <h3 class="text-lg font-semibold">Business — 59€/mois</h3>
+          <p class="mt-2 text-gray-600">Multi-salles • Comptes staff • Statistiques avancées • Export comptable</p>
+          <div class="mt-6">
+            <button class="w-full px-4 py-2 bg-white border border-gray-200 rounded-md">Choisir ce plan</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div>
+          <h2 class="text-2xl font-extrabold text-gray-900">Parlons de votre salle de sport 💬</h2>
+          <p class="mt-4 text-gray-600">Nous vous aidons à mettre en place l’application, importer vos membres et configurer votre salle.</p>
+          <ul class="mt-6 text-sm text-gray-700 space-y-2">
+            <li>📧 contact&#64;fitness-app.com</li>
+            <li>📱 +216 XX XXX XXX</li>
+            <li>🌍 Tunis, Sousse, Sfax</li>
+          </ul>
+        </div>
+
+        <div>
+          <form class="space-y-4">
+            <div>
+              <label class="block text-sm font-medium text-gray-700">Nom</label>
+              <input class="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2" />
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700">Email</label>
+              <input class="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2" />
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700">Message</label>
+              <textarea class="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2" rows="4"></textarea>
+            </div>
+            <div>
+              <button type="button" class="px-4 py-2 bg-amber-500 text-white rounded-md">Envoyer</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="bg-indigo-50">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <h2 class="text-2xl font-extrabold text-gray-900">FAQ</h2>
+      <div class="mt-6 space-y-4">
+        <details class="bg-white p-4 rounded-lg transition duration-300 ease-out hover:shadow-lg">
+          <summary class="font-semibold">L’application est-elle compatible mobile ?</summary>
+          <p class="mt-2 text-gray-600">Oui, responsive + version mobile en cours.</p>
+        </details>
+        <details class="bg-white p-4 rounded-lg">
+          <summary class="font-semibold">Puis-je gérer plusieurs salles ?</summary>
+          <p class="mt-2 text-gray-600">Oui, avec le plan Business.</p>
+        </details>
+        <details class="bg-white p-4 rounded-lg transition duration-300 ease-out hover:shadow-lg">
+          <summary class="font-semibold">Les données sont-elles sécurisées ?</summary>
+          <p class="mt-2 text-gray-600">100% : Spring Boot + JWT + PostgreSQL + backups.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col sm:flex-row justify-between items-center">
+      <div class="text-sm">© {{ today | date:'yyyy' }} Fitness App — Tous droits réservés</div>
+      <div class="text-sm">contact&#64;fitness-app.com</div>
+    </div>
+  </footer>
+</main>

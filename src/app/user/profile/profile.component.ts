@@ -11,6 +11,7 @@ export class ProfileComponent implements OnInit {
    profile: any = null;
   form: FormGroup;
   saving = false;
+  showPassword = false;
 
   constructor(private fb: FormBuilder, private userService: UserService) {
     this.form = this.fb.group({
@@ -18,6 +19,10 @@ export class ProfileComponent implements OnInit {
       email: ['', [Validators.email]],
       password: ['']
     });
+  }
+
+  toggleShowPassword() {
+    this.showPassword = !this.showPassword;
   }
 
   ngOnInit(): void {

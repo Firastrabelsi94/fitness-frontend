@@ -1,10 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { UserService, UserProfile } from '../user.service';
-import { UserViewDialogComponent } from '../dialogs/user-view-dialog.component';
-import { UserEditDialogComponent } from '../dialogs/user-edit-dialog.component';
-import { ConfirmDialogComponent } from '../dialogs/confirm-dialog.component';
 
 @Component({
   selector: 'app-user-list',
@@ -14,29 +10,48 @@ import { ConfirmDialogComponent } from '../dialogs/confirm-dialog.component';
 export class ListComponent implements OnInit {
   users: UserProfile[] = [];
   columns = ['id','username','email','roles','actions'];
-  constructor(private userService: UserService, private dialog: MatDialog, private snack: MatSnackBar) { }
+  // modal state
+  selectedUser: UserProfile | null = null;
+  editingUser: Partial<UserProfile> | null = null;
+  confirmTarget: UserProfile | null = null;
+  showViewModal = false;
+  showEditModal = false;
+  showConfirmModal = false;
+
+  constructor(private userService: UserService, private snack: MatSnackBar) { }
 
   ngOnInit(): void { this.load(); }
 
   load() { this.userService.listUsers().subscribe({ next: res => this.users = res, error: err => this.snack.open('Failed to load users','Close',{duration:3000}) }); }
 
-  view(u: UserProfile) { this.dialog.open(UserViewDialogComponent, { data: u, width: '420px', panelClass: 'app-dialog-centered' }); }
-
-  edit(u: UserProfile) {
-    const ref = this.dialog.open(UserEditDialogComponent, { data: u, width: '480px', panelClass: 'app-dialog-centered' });
-    ref.afterClosed().subscribe(result => {
-      if (result) {
-        this.userService.updateUserById(u.id, result).subscribe({ next: res => { this.snack.open('User updated', 'Close', { duration: 2500 }); this.load(); }, error: e => this.snack.open('Update failed','Close',{duration:2500}) });
-      }
-    });
+  view(u: UserProfile) {
+    this.selectedUser = u;
+    this.showViewModal = true;
   }
 
-  delete(u: UserProfile) {
-    const ref = this.dialog.open(ConfirmDialogComponent, { data: { title: 'Delete user', message: `Delete ${u.username}?` }, width: '360px', panelClass: 'app-dialog-centered' });
-    ref.afterClosed().subscribe(ok => {
-      if (ok) {
-        this.userService.deleteUser(u.id).subscribe({ next: () => { this.snack.open('Deleted', 'Close', { duration:2000 }); this.load(); }, error: e => this.snack.open('Delete failed','Close',{duration:2500}) });
-      }
-    });
+  closeView() { this.showViewModal = false; this.selectedUser = null; }
+
+  edit(u: UserProfile) {
+    this.editingUser = { id: u.id, email: u.email };
+    this.showEditModal = true;
+  }
+
+  saveEdit() {
+    if (!this.editingUser || !this.editingUser.id) return;
+    const id = this.editingUser.id as number;
+    const payload: any = { email: this.editingUser.email };
+    if ((this.editingUser as any).password) { payload.password = (this.editingUser as any).password; }
+    this.userService.updateUserById(id, payload).subscribe({ next: () => { this.snack.open('User updated','Close',{duration:2500}); this.load(); this.showEditModal = false; this.editingUser = null; }, error: e => this.snack.open('Update failed','Close',{duration:2500}) });
+  }
+
+  closeEdit() { this.showEditModal = false; this.editingUser = null; }
+
+  confirmDelete(u: UserProfile) { this.confirmTarget = u; this.showConfirmModal = true; }
+
+  cancelDelete() { this.showConfirmModal = false; this.confirmTarget = null; }
+
+  deleteConfirmed() {
+    if (!this.confirmTarget) return;
+    this.userService.deleteUser(this.confirmTarget.id).subscribe({ next: () => { this.snack.open('Deleted','Close',{duration:2000}); this.load(); this.showConfirmModal = false; this.confirmTarget = null; }, error: e => this.snack.open('Delete failed','Close',{duration:2500}) });
   }
 }
