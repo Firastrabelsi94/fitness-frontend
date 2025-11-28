@@ -9,7 +9,16 @@ import { UserService, UserProfile } from '../user.service';
 })
 export class ListComponent implements OnInit {
   users: UserProfile[] = [];
-  columns = ['id','username','email','roles','actions'];
+columns = [
+  'id',
+  'username',
+  'email',
+  'roles',
+  'subscriptionType',
+  'subscriptionStartDate',
+  'subscriptionEndDate',
+  'actions'
+];
   // modal state
   selectedUser: UserProfile | null = null;
   editingUser: Partial<UserProfile> | null = null;
@@ -31,18 +40,42 @@ export class ListComponent implements OnInit {
 
   closeView() { this.showViewModal = false; this.selectedUser = null; }
 
-  edit(u: UserProfile) {
-    this.editingUser = { id: u.id, email: u.email };
-    this.showEditModal = true;
-  }
+ edit(u: UserProfile) {
+  this.editingUser = {
+    id: u.id,
+    email: u.email,
+    subscriptionType: u.subscriptionType,
+    subscriptionStartDate: u.subscriptionStartDate,
+    subscriptionEndDate: u.subscriptionEndDate
+  };
+  this.showEditModal = true;
+}
 
   saveEdit() {
-    if (!this.editingUser || !this.editingUser.id) return;
-    const id = this.editingUser.id as number;
-    const payload: any = { email: this.editingUser.email };
-    if ((this.editingUser as any).password) { payload.password = (this.editingUser as any).password; }
-    this.userService.updateUserById(id, payload).subscribe({ next: () => { this.snack.open('User updated','Close',{duration:2500}); this.load(); this.showEditModal = false; this.editingUser = null; }, error: e => this.snack.open('Update failed','Close',{duration:2500}) });
+  if (!this.editingUser || !this.editingUser.id) return;
+
+  const payload: any = {
+    email: this.editingUser.email,
+    subscriptionType: this.editingUser.subscriptionType,
+    subscriptionStartDate: this.editingUser.subscriptionStartDate,
+    subscriptionEndDate: this.editingUser.subscriptionEndDate
+  };
+
+  if ((this.editingUser as any).password) {
+    payload.password = (this.editingUser as any).password;
   }
+
+  this.userService.updateUserById(this.editingUser.id, payload).subscribe({
+    next: () => {
+      this.snack.open('User updated', 'Close', { duration: 2500 });
+      this.load();
+      this.showEditModal = false;
+      this.editingUser = null;
+    },
+    error: () => this.snack.open('Update failed', 'Close', { duration: 2500 })
+  });
+}
+
 
   closeEdit() { this.showEditModal = false; this.editingUser = null; }
 
